@@ -109,8 +109,22 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
+
+const lambdaObj = {
+  name: "Bill Bob",
+  age: 7,
+  location: "Unfortunate"
+}
+
 class Lambdasian {
-  
+  constructor(lambdaObj) {
+    this.name = lambdaObj.name;
+    this.age = lambdaObj.age;
+    this.location = lambdaObj.location;
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
 
 /*
@@ -127,9 +141,30 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+const instructorObj = {
+  name: "Dilbert",
+  age: 732,
+  location: "That Place",
+  specialty: "Nose mining",
+  favLanguage: "English dummy",
+  catchPhrase: "Uhhhh"
 }
+
+class Instructor extends Lambdasian {
+  constructor(instObj) {
+    super(instObj);
+    this.specialty = instObj.specialty;
+    this.favLanguage = instObj.favLanguage;
+    this.catchPhrase = instObj.catchPhrase;
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+  grade(studentObj, subject) {
+    return `${studentObj.name} receives a perfect score on ${subject}`;
+  }
+}
+
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
